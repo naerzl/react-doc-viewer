@@ -2,15 +2,12 @@ import React from "react";
 import { pdfjs } from "react-pdf";
 import styled from "styled-components";
 import { DocRenderer, IStyledProps } from "../../types";
-import { getMetaURL } from "../../utils/importMeta";
 import PDFControls from "./components/PDFControls";
 import PDFPages from "./components/pages/PDFPages";
 import { PDFProvider } from "./state";
 
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  "pdfjs-dist/build/pdf.worker.min.js",
-  getMetaURL()
-).toString();
+pdfjs.GlobalWorkerOptions.workerSrc =
+  `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.mjs`;
 
 const PDFRenderer: DocRenderer = ({ mainState }) => {
   return (
